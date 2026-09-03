@@ -2,10 +2,14 @@ const CACHE_NAME = 'lifestyle-checklist-v1';
 const ASSETS = [
   './',
   './index.html',
+  './checklist.html',
+  './timers.html',
+  './settings.html',
   './style.css',
   './app.js',
   './manifest.json'
 ];
+
 
 self.addEventListener('install', event => {
   event.waitUntil(
