@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lifestyle-checklist-v1.1';
+const CACHE_NAME = 'lifestyle-checklist-v2';
 const ASSETS = [
   './',
   './index.html',
