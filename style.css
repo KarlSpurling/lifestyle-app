@@ -67,6 +67,14 @@ html {
   text-decoration: none;
   font-size: 1.1rem;
 }
+
+/* TIMER PAGE LAYOUT */
+.timer-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 /* TIMER BUTTONS */
 .timer-btn {
   width: 100%;
