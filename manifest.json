@@ -1,0 +1,9 @@
+{
+  "name": "Lifestyle Checklist",
+  "short_name": "Lifestyle",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4f4f4",
+  "theme_color": "#222222",
+  "icons": []
+}
