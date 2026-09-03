@@ -54,4 +54,17 @@ html {
     font-size: 26px;
   }
 }
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background: #222;
+  padding: 12px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
 
