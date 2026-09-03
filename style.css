@@ -70,17 +70,36 @@ html {
 /* TIMER BUTTONS */
 .timer-btn {
   width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  font-size: 1.3rem;
+  padding: 16px;
+  margin: 10px 0;
+  font-size: 1.4rem;
   background: #333;
   color: #fff;
   border: none;
+  border-radius: 8px;
 }
 
+
+/* BIG TIMER DISPLAY */
 #timer-display {
-  font-size: 2.5rem;
+  font-size: 4rem;        /* Bigger on phones */
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
+  font-weight: bold;
 }
+
+/* Even bigger on tablets */
+@media (min-width: 768px) {
+  #timer-display {
+    font-size: 6rem;
+  }
+}
+
+/* Massive on iPad 12.9" landscape */
+@media (min-width: 1024px) {
+  #timer-display {
+    font-size: 8rem;
+  }
+}
+
 
