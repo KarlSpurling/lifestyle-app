@@ -18,3 +18,21 @@ checkboxes.forEach((box, index) => {
     localStorage.setItem(key, box.checked ? 'true' : 'false');
   });
 });
+function startTimer(minutes) {
+  let seconds = minutes * 60;
+  const display = document.getElementById('timer-display');
+
+  const interval = setInterval(() => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+
+    display.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+
+    seconds--;
+
+    if (seconds < 0) {
+      clearInterval(interval);
+      display.textContent = "Done";
+    }
+  }, 1000);
+}
