@@ -165,3 +165,6 @@ function toggleDarkMode() {
 
 // Apply dark mode on page load
 document.addEventListener('DOMContentLoaded', applyDarkModeSetting);
+
+console.log("Dark mode state:", localStorage.getItem('dark-mode'));
+
