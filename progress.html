@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Progress Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="checklist.html">Checklist</a>
+  <a href="timers.html">Timers</a>
+  <a href="planner.html">Planner</a>
+  <a href="progress.html">Progress</a>
+  <a href="settings.html">Settings</a>
+</nav>
+
+<header>
+  <h1>Your Progress</h1>
+</header>
+
+<main class="progress-container">
+
+  <section class="progress-section">
+    <h2>Today’s Completion</h2>
+    <div id="progress-today">Loading...</div>
+  </section>
+
+  <section class="progress-section">
+    <h2>Last 7 Days</h2>
+    <ul id="progress-history"></ul>
+  </section>
+
+  <section class="progress-section">
+    <h2>Streak</h2>
+    <div id="progress-streak">Loading...</div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
