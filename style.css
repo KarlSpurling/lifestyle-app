@@ -259,5 +259,43 @@ html {
     font-size: 1.9rem;
   }
 }
+/* PROGRESS TRACKER */
+.progress-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.progress-section {
+  background: #fff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+#progress-history {
+  list-style: none;
+  padding: 0;
+}
+
+#progress-history li {
+  padding: 6px 0;
+  font-size: 1.2rem;
+}
+
+/* Bigger on tablets */
+@media (min-width: 768px) {
+  #progress-history li {
+    font-size: 1.6rem;
+  }
+}
+
+/* Huge on iPad 12.9" */
+@media (min-width: 1024px) {
+  #progress-history li {
+    font-size: 1.9rem;
+  }
+}
 
 
