@@ -119,9 +119,30 @@ html {
 
 #update-banner button {
   margin-left: 10px;
-  padding: 6px 12px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
 }
+
+/* Bigger on tablets */
+@media (min-width: 768px) {
+  #update-banner button {
+    font-size: 1.6rem;
+    padding: 16px 26px;
+  }
+}
+
+/* Huge on iPad 12.9" */
+@media (min-width: 1024px) {
+  #update-banner button {
+    font-size: 1.9rem;
+    padding: 20px 32px;
+  }
+}
+
 
 .hidden {
   display: none;
