@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Today Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="dashboard.html">Dashboard</a>
+  <a href="checklist.html">Checklist</a>
+  <a href="timers.html">Timers</a>
+  <a href="settings.html">Settings</a>
+</nav>
+
+<header>
+  <h1>Today</h1>
+</header>
+
+<main class="dashboard-container">
+
+  <section class="dash-section">
+    <h2>Checklist Progress</h2>
+    <div id="progress-display">Loading...</div>
+  </section>
+
+  <section class="dash-section">
+    <h2>Quick Timers</h2>
+    <button class="dash-btn" onclick="startTimer(3)">Warm-up (3 min)</button>
+    <button class="dash-btn" onclick="startTimer(8)">Movement (8 min)</button>
+    <button class="dash-btn" onclick="startTimer(10)">Strength (10 min)</button>
+    <button class="dash-btn" onclick="startTimer(4)">Balance (4 min)</button>
+  </section>
+
+  <section class="dash-section">
+    <h2>Daily Summary</h2>
+    <div id="daily-summary">Loading...</div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
+
