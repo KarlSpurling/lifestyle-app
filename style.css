@@ -319,5 +319,43 @@ html {
     font-size: 1.9rem;
   }
 }
+/* DARK MODE */
+body.dark {
+  background: #111;
+  color: #eee;
+}
+
+body.dark header {
+  background: #000;
+  color: #fff;
+}
+
+body.dark .navbar {
+  background: #000;
+}
+
+body.dark .navbar a {
+  background: #222;
+  color: #fff;
+}
+
+body.dark .dash-section,
+body.dark .planner-day,
+body.dark .progress-section {
+  background: #222;
+  color: #eee;
+}
+
+body.dark .settings-btn,
+body.dark .dash-btn,
+body.dark .timer-btn {
+  background: #444;
+  color: #fff;
+}
+
+body.dark #update-banner {
+  background: #555;
+  color: #fff;
+}
 
 
