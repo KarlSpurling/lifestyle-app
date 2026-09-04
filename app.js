@@ -97,3 +97,10 @@ function updateDashboard() {
 
 // Run dashboard update on page load
 document.addEventListener('DOMContentLoaded', updateDashboard);
+
+// PLANNER LOGIC (placeholder for future features)
+function initPlanner() {
+  // Reserved for future interactive planner features
+}
+
+document.addEventListener('DOMContentLoaded', initPlanner);
