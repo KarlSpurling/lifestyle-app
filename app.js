@@ -156,3 +156,25 @@ function updateProgress() {
 
 document.addEventListener('DOMContentLoaded', updateProgress);
 
+// DARK MODE LOGIC
+function applyDarkModeSetting() {
+  const mode = localStorage.getItem('dark-mode');
+  if (mode === 'on') {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+}
+
+function toggleDarkMode() {
+  const isDark = document.body.classList.contains('dark');
+  if (isDark) {
+    localStorage.setItem('dark-mode', 'off');
+  } else {
+    localStorage.setItem('dark-mode', 'on');
+  }
+  applyDarkModeSetting();
+}
+
+// Apply dark mode on page load
+document.addEventListener('DOMContentLoaded', applyDarkModeSetting);
