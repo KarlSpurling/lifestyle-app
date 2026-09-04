@@ -59,3 +59,9 @@ function startTimer(minutes) {
 function refreshApp() {
   window.location.reload(true);
 }
+function clearAppCache() {
+  caches.keys().then(keys => {
+    keys.forEach(key => caches.delete(key));
+  });
+  alert("Cache cleared. Restart the app.");
+}
