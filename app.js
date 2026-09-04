@@ -104,3 +104,55 @@ function initPlanner() {
 }
 
 document.addEventListener('DOMContentLoaded', initPlanner);
+// PROGRESS TRACKER LOGIC
+function updateProgress() {
+  const todayDisplay = document.getElementById('progress-today');
+  const historyList = document.getElementById('progress-history');
+  const streakDisplay = document.getElementById('progress-streak');
+
+  if (!todayDisplay || !historyList || !streakDisplay) return;
+
+  // Count today's checklist completion
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let total = checkboxes.length;
+  let checked = 0;
+
+  checkboxes.forEach(box => {
+    if (box.checked) checked++;
+  });
+
+  const percent = Math.round((checked / total) * 100);
+  todayDisplay.textContent = `${checked} of ${total} tasks (${percent}%)`;
+
+  // Save today's progress
+  const todayKey = new Date().toISOString().split('T')[0];
+  localStorage.setItem(`progress-${todayKey}`, percent);
+
+  // Build last 7 days history
+  historyList.innerHTML = '';
+  let streak = 0;
+
+  for (let i = 0; i < 7; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    const key = date.toISOString().split('T')[0];
+    const value = localStorage.getItem(`progress-${key}`);
+
+    if (value !== null) {
+      const li = document.createElement('li');
+      li.textContent = `${key}: ${value}%`;
+      historyList.appendChild(li);
+
+      if (parseInt(value) === 100) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+  }
+
+  streakDisplay.textContent = `${streak} day streak`;
+}
+
+document.addEventListener('DOMContentLoaded', updateProgress);
+
