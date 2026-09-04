@@ -176,5 +176,46 @@ html {
     padding: 26px;
   }
 }
+/* DASHBOARD */
+.dashboard-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dash-section {
+  background: #fff;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.dash-btn {
+  width: 100%;
+  padding: 16px;
+  margin: 8px 0;
+  font-size: 1.4rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Bigger on tablets */
+@media (min-width: 768px) {
+  .dash-btn {
+    font-size: 1.8rem;
+    padding: 22px;
+  }
+}
+
+/* Huge on iPad 12.9" */
+@media (min-width: 1024px) {
+  .dash-btn {
+    font-size: 2rem;
+    padding: 26px;
+  }
+}
 
 
