@@ -56,3 +56,6 @@ function startTimer(minutes) {
     }
   }, 1000);
 }
+function refreshApp() {
+  window.location.reload(true);
+}
