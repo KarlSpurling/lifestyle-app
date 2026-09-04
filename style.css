@@ -54,18 +54,40 @@ html {
     font-size: 26px;
   }
 }
-/* NAVBAR */
+/* NAVBAR FIX FOR IPHONE */
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background: #222;
   padding: 12px;
+  gap: 12px; /* spacing between items */
+  overflow-x: auto; /* prevents squashing */
 }
 
 .navbar a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  padding: 10px 14px; /* makes each link a button */
+  background: #333;
+  border-radius: 8px;
+  flex-shrink: 0; /* prevents merging on small screens */
+}
+
+/* Bigger on tablets */
+@media (min-width: 768px) {
+  .navbar a {
+    font-size: 1.5rem;
+    padding: 14px 20px;
+  }
+}
+
+/* Huge on iPad 12.9" */
+@media (min-width: 1024px) {
+  .navbar a {
+    font-size: 1.8rem;
+    padding: 18px 24px;
+  }
 }
 
 /* TIMER PAGE LAYOUT */
