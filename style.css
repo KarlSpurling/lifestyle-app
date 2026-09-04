@@ -109,5 +109,22 @@ html {
     font-size: 8rem;
   }
 }
+/* UPDATE BANNER */
+#update-banner {
+  background: #ffcc00;
+  padding: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#update-banner button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  font-size: 1rem;
+}
+
+.hidden {
+  display: none;
+}
 
 
