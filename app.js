@@ -65,3 +65,35 @@ function clearAppCache() {
   });
   alert("Cache cleared. Restart the app.");
 }
+// DASHBOARD LOGIC
+function updateDashboard() {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const progressDisplay = document.getElementById('progress-display');
+  const summaryDisplay = document.getElementById('daily-summary');
+
+  if (!progressDisplay || !summaryDisplay) return;
+
+  let total = checkboxes.length;
+  let checked = 0;
+
+  checkboxes.forEach(box => {
+    if (box.checked) checked++;
+  });
+
+  const percent = Math.round((checked / total) * 100);
+
+  progressDisplay.textContent = `${checked} of ${total} tasks completed (${percent}%)`;
+
+  // Daily summary
+  let summary = "You're off to a good start.";
+  if (percent === 0) summary = "Let's begin with one small task.";
+  if (percent >= 25) summary = "Nice progress — keep going.";
+  if (percent >= 50) summary = "Halfway there.";
+  if (percent >= 75) summary = "Great work — almost done.";
+  if (percent === 100) summary = "All tasks completed — excellent.";
+
+  summaryDisplay.textContent = summary;
+}
+
+// Run dashboard update on page load
+document.addEventListener('DOMContentLoaded', updateDashboard);
