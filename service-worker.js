@@ -5,6 +5,7 @@ const CACHE_NAME = `lifestyle-cache-${VERSION}`;
 const ASSETS = [
   './',
   './dashboard.html',
+  './planner.html',
   './index.html',
   './checklist.html',
   './timers.html',
@@ -13,6 +14,7 @@ const ASSETS = [
   './app.js',
   './manifest.json'
 ];
+
 
 self.addEventListener('install', event => {
   event.waitUntil(
