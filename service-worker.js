@@ -4,6 +4,7 @@ const CACHE_NAME = `lifestyle-cache-${VERSION}`;
 
 const ASSETS = [
   './',
+  './dashboard.html',
   './index.html',
   './checklist.html',
   './timers.html',
