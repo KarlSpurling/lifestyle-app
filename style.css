@@ -126,5 +126,34 @@ html {
 .hidden {
   display: none;
 }
+/* SETTINGS PAGE BUTTONS */
+.settings-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  margin: 12px 0;
+  font-size: 1.4rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Larger buttons on tablets */
+@media (min-width: 768px) {
+  .settings-btn {
+    font-size: 1.8rem;
+    padding: 22px;
+  }
+}
+
+/* Even larger on iPad 12.9" */
+@media (min-width: 1024px) {
+  .settings-btn {
+    font-size: 2rem;
+    padding: 26px;
+  }
+}
 
 
