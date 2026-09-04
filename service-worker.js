@@ -6,6 +6,7 @@ const ASSETS = [
   './',
   './dashboard.html',
   './planner.html',
+  './progress.html',
   './index.html',
   './checklist.html',
   './timers.html',
