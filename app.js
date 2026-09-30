@@ -1,10 +1,15 @@
 
 function updateApp() {
-  navigator.serviceWorker.getRegistrations().then(regs => {
-    regs.forEach(reg => reg.unregister());
-    window.location.reload();
-  });
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if (reg && reg.waiting) {
+        reg.waiting.postMessage({ action: 'skipWaiting' });
+      }
+    });
+  }
+  window.location.reload();
 }
+
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
