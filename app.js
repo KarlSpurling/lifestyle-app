@@ -87,15 +87,12 @@ function updateDashboard() {
   summaryDisplay.textContent = summary;
 }
 
-// Run dashboard update on page load
-document.addEventListener('DOMContentLoaded', updateDashboard);
 
 // PLANNER LOGIC (placeholder for future features)
 function initPlanner() {
   // Reserved for future interactive planner features
 }
 
-document.addEventListener('DOMContentLoaded', initPlanner);
 // PROGRESS TRACKER LOGIC
 function updateProgress() {
   const todayDisplay = document.getElementById('progress-today');
@@ -146,8 +143,6 @@ function updateProgress() {
   streakDisplay.textContent = `${streak} day streak`;
 }
 
-document.addEventListener('DOMContentLoaded', updateProgress);
-
 // DARK MODE LOGIC
 function applyDarkModeSetting() {
   const mode = localStorage.getItem('dark-mode');
@@ -168,8 +163,34 @@ function toggleDarkMode() {
   applyDarkModeSetting();
 }
 
-// Apply dark mode on page load
-document.addEventListener('DOMContentLoaded', applyDarkModeSetting);
+// PAGE-SPECIFIC INITIALISATION
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Checklist logic always runs (safe)
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  if (checkboxes.length) {
+    // checkbox load/save logic already handled above
+  }
+
+  // Dashboard page
+  if (document.getElementById('progress-display')) {
+    updateDashboard();
+  }
+
+  // Planner page
+  if (document.getElementById('planner-container')) {
+    initPlanner();
+  }
+
+  // Progress page
+  if (document.getElementById('progress-today')) {
+    updateProgress();
+  }
+
+  // Dark mode always applies safely
+  applyDarkModeSetting();
+});
+
 
 console.log("Dark mode state:", localStorage.getItem('dark-mode'));
 
