@@ -11,20 +11,25 @@ function updateApp() {
 }
 
 
+// CHECKBOX SAVE/LOAD LOGIC USING STABLE IDS
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-checkboxes.forEach((box, index) => {
-  const key = `lifestyle-check-${index}`;
+checkboxes.forEach(box => {
+  // Use the checkbox's ID as the storage key
+  const key = `lifestyle-check-${box.id}`;
 
+  // Load saved state
   const saved = localStorage.getItem(key);
   if (saved === 'true') {
     box.checked = true;
   }
 
+  // Save state on change
   box.addEventListener('change', () => {
     localStorage.setItem(key, box.checked ? 'true' : 'false');
   });
 });
+
 function startTimer(minutes) {
   let seconds = minutes * 60;
   const display = document.getElementById('timer-display');
