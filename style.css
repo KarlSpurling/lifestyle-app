@@ -208,6 +208,33 @@ html {
 .hidden {
   display: none;
 }
+
+/* FIX BUTTON CLICKABILITY ON DESKTOP */
+button,
+.settings-btn,
+.dash-btn,
+.timer-btn {
+  display: block;        /* ensures width + padding apply */
+  width: 100%;           /* full-width buttons */
+  box-sizing: border-box; /* prevents overflow */
+  cursor: pointer;       /* ensures pointer cursor */
+}
+
+/* SETTINGS PAGE BUTTONS */
+.settings-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  margin: 12px 0;
+  font-size: 1.4rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
 /* SETTINGS PAGE BUTTONS */
 .settings-btn {
   display: block;
