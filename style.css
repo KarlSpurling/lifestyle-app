@@ -93,15 +93,6 @@ html {
     font-size: 26px;
   }
 }
-/* Even larger buttons on desktop */
-@media (min-width: 1024px) {
-  .settings-btn,
-  .dash-btn,
-  .timer-btn {
-    font-size: 2.2rem;
-    padding: 30px;
-  }
-}
 /* NAVBAR FIX FOR IPHONE */
 .navbar {
   display: flex;
