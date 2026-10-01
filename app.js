@@ -59,11 +59,15 @@ function clearAppCache() {
 }
 // DASHBOARD LOGIC
 function updateDashboard() {
+  // Guard: only run on dashboard page
+  if (!document.getElementById('progress-display')) return;
+
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const progressDisplay = document.getElementById('progress-display');
   const summaryDisplay = document.getElementById('daily-summary');
 
-  if (!progressDisplay || !summaryDisplay) return;
+  if (!checkboxes.length) return;
+
 
   let total = checkboxes.length;
   let checked = 0;
@@ -95,11 +99,16 @@ function initPlanner() {
 
 // PROGRESS TRACKER LOGIC
 function updateProgress() {
+  // Guard: only run on progress page
+  if (!document.getElementById('progress-today')) return;
+
   const todayDisplay = document.getElementById('progress-today');
   const historyList = document.getElementById('progress-history');
   const streakDisplay = document.getElementById('progress-streak');
 
-  if (!todayDisplay || !historyList || !streakDisplay) return;
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  if (!checkboxes.length) return;
+
 
   // Count today's checklist completion
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -133,9 +142,10 @@ function updateProgress() {
       historyList.appendChild(li);
 
       if (parseInt(value) === 100) {
-        streak++;
+      streak++;
       } else {
-        break;
+        // Stop counting streak but continue building history
+        // (no break)
       }
     }
   }
