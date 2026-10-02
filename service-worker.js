@@ -1,5 +1,5 @@
 // AUTO-VERSIONING SERVICE WORKER
-const VERSION = '1.0.1'; // update this to match APP_VERSION on deploy
+const VERSION = '1.0.2'; // update this to match APP_VERSION on deploy
 const CACHE_NAME = `lifestyle-cache-${VERSION}`;
 
 const ASSETS = [
