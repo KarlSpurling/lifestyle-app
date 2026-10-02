@@ -41,6 +41,24 @@ checkboxes.forEach(box => {
   });
 });
 
+// Helper: read checklist state from localStorage when no checkboxes exist in DOM
+function getStoredChecklistProgress() {
+  const prefix = 'lifestyle-check-';
+  const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
+  if (!keys.length) return null;
+
+  let total = keys.length;
+  let checked = 0;
+
+  keys.forEach(k => {
+    if (localStorage.getItem(k) === 'true') checked++;
+  });
+
+  const percent = total ? Math.round((checked / total) * 100) : 0;
+  return { total, checked, percent };
+}
+
+
 function startTimer(minutes) {
   let seconds = minutes * 60;
   const display = document.getElementById('timer-display');
@@ -77,19 +95,34 @@ function updateDashboard() {
   const progressDisplay = document.getElementById('progress-display');
   const summaryDisplay = document.getElementById('daily-summary');
 
-  if (!checkboxes.length) return;
+  // If there are no checkboxes in the DOM (we're on dashboard page),
+  // try to read saved checklist state from localStorage.
+  if (!checkboxes.length) {
+    const stored = getStoredChecklistProgress();
+    if (stored === null) {
+      // No saved tasks found — show zero state
+      progressDisplay.textContent = `0 of 0 tasks completed (0%)`;
+      // Daily summary fallback
+      summaryDisplay.textContent = "No checklist data available.";
+      return;
+    } else {
+      progressDisplay.textContent = `${stored.checked} of ${stored.total} tasks completed (${stored.percent}%)`;
+      // ensure percent variable exists for the summary logic below
+      var percent = stored.percent;
+    }
+  } else {
+    // Normal DOM-based calculation
+    let total = checkboxes.length;
+    let checked = 0;
 
+    checkboxes.forEach(box => {
+      if (box.checked) checked++;
+    });
 
-  let total = checkboxes.length;
-  let checked = 0;
+    var percent = Math.round((checked / total) * 100);
+    progressDisplay.textContent = `${checked} of ${total} tasks completed (${percent}%)`;
+  }
 
-  checkboxes.forEach(box => {
-    if (box.checked) checked++;
-  });
-
-  const percent = Math.round((checked / total) * 100);
-
-  progressDisplay.textContent = `${checked} of ${total} tasks completed (${percent}%)`;
 
   // Daily summary
   let summary = "You're off to a good start.";
@@ -109,6 +142,16 @@ function initPlanner() {
 }
 
 // PROGRESS TRACKER LOGIC
+
+// DARK MODE LOGIC
+function applyDarkModeSetting() {
+  const mode = localStorage.getItem('dark-mode');
+  if (mode === 'on') {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+}
 function updateProgress() {
   // Guard: only run on progress page
   if (!document.getElementById('progress-today')) return;
@@ -119,20 +162,37 @@ function updateProgress() {
 
   // Use a single declaration for checkboxes
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  if (!checkboxes.length) return;
 
-  // Count today's checklist completion
-  let total = checkboxes.length;
-  let checked = 0;
+  // Determine today's checklist completion either from DOM or from stored state
+  let percent;
+  let total;
+  let checked;
 
-  checkboxes.forEach(box => {
-    if (box.checked) checked++;
-  });
+  if (checkboxes.length) {
+    total = checkboxes.length;
+    checked = 0;
+    checkboxes.forEach(box => {
+      if (box.checked) checked++;
+    });
+    percent = Math.round((checked / total) * 100);
+    todayDisplay.textContent = `${checked} of ${total} tasks (${percent}%)`;
+  } else {
+    // No checkboxes in DOM — read saved checklist state
+    const stored = getStoredChecklistProgress();
+    if (stored === null) {
+      total = 0;
+      checked = 0;
+      percent = 0;
+      todayDisplay.textContent = `${checked} of ${total} tasks (${percent}%)`;
+    } else {
+      total = stored.total;
+      checked = stored.checked;
+      percent = stored.percent;
+      todayDisplay.textContent = `${checked} of ${total} tasks (${percent}%)`;
+    }
+  }
 
-  const percent = Math.round((checked / total) * 100);
-  todayDisplay.textContent = `${checked} of ${total} tasks (${percent}%)`;
-
-  // Save today's progress
+  // Save today's progress (always save the percent so progress history works)
   const todayKey = new Date().toISOString().split('T')[0];
   localStorage.setItem(`progress-${todayKey}`, percent);
 
@@ -160,16 +220,6 @@ function updateProgress() {
   }
 
   streakDisplay.textContent = `${streak} day streak`;
-}
-
-// DARK MODE LOGIC
-function applyDarkModeSetting() {
-  const mode = localStorage.getItem('dark-mode');
-  if (mode === 'on') {
-    document.body.classList.add('dark');
-  } else {
-    document.body.classList.remove('dark');
-  }
 }
 
 function toggleDarkMode() {
