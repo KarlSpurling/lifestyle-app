@@ -1,6 +1,6 @@
 
 // APP VERSION - update this string when you deploy a new release
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.0.1';
 
 // Insert version into any element with class "app-version"
 function showAppVersion() {
