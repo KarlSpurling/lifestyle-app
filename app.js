@@ -1,4 +1,15 @@
 
+// APP VERSION - update this string when you deploy a new release
+const APP_VERSION = '1.0.0';
+
+// Insert version into any element with class "app-version"
+function showAppVersion() {
+  const els = document.querySelectorAll('.app-version');
+  els.forEach(el => {
+    el.textContent = `v${APP_VERSION}`;
+  });
+}
+
 function updateApp() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistration().then(reg => {
@@ -106,12 +117,11 @@ function updateProgress() {
   const historyList = document.getElementById('progress-history');
   const streakDisplay = document.getElementById('progress-streak');
 
+  // Use a single declaration for checkboxes
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   if (!checkboxes.length) return;
 
-
   // Count today's checklist completion
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   let total = checkboxes.length;
   let checked = 0;
 
@@ -141,11 +151,10 @@ function updateProgress() {
       li.textContent = `${key}: ${value}%`;
       historyList.appendChild(li);
 
-      if (parseInt(value) === 100) {
-      streak++;
+      if (parseInt(value, 10) === 100) {
+        streak++;
       } else {
-        // Stop counting streak but continue building history
-        // (no break)
+        // stop counting streak but continue building history
       }
     }
   }
@@ -199,6 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dark mode always applies safely
   applyDarkModeSetting();
+  
+  // Show version badge on every page
+  showAppVersion();
+
 });
 
 
