@@ -1,6 +1,20 @@
 
 // APP VERSION - update this string when you deploy a new release
-const APP_VERSION = '1.0.2';
+const APP_VERSION = '1.0.3';
+
+// Canonical checklist IDs used by the app (update this when you add/remove tasks)
+const TASK_IDS = [
+  'morning-warmup',
+  'morning-movement',
+  'morning-strength',
+  'morning-balance',
+  'commute-stand',
+  'commute-calf',
+  'commute-posture',
+  'evening-walk',
+  'evening-stretch',
+  'evening-meal'
+];
 
 // Insert version into any element with class "app-version"
 function showAppVersion() {
@@ -42,21 +56,23 @@ checkboxes.forEach(box => {
 });
 
 // Helper: read checklist state from localStorage when no checkboxes exist in DOM
+// Ignores legacy numeric keys like lifestyle-check-0
+// Read checklist state using canonical TASK_IDS (keeps totals stable)
 function getStoredChecklistProgress() {
-  const prefix = 'lifestyle-check-';
-  const keys = Object.keys(localStorage).filter(k => k.startsWith(prefix));
-  if (!keys.length) return null;
+  if (!Array.isArray(TASK_IDS) || TASK_IDS.length === 0) return null;
 
-  let total = keys.length;
+  let total = TASK_IDS.length;
   let checked = 0;
 
-  keys.forEach(k => {
-    if (localStorage.getItem(k) === 'true') checked++;
+  TASK_IDS.forEach(id => {
+    const key = `lifestyle-check-${id}`;
+    if (localStorage.getItem(key) === 'true') checked++;
   });
 
   const percent = total ? Math.round((checked / total) * 100) : 0;
   return { total, checked, percent };
 }
+
 
 
 function startTimer(minutes) {
